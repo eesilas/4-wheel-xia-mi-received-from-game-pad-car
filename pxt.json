@@ -4,7 +4,8 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "DFRobot_xia_mi_Board": "github:DFRobot/pxt-DFRobot_xia_mi_Board#v0.8.0"
     },
     "files": [
         "main.blocks",

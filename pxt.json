@@ -1,6 +1,6 @@
 {
     "name": "4 wheel xia mi received from game pad car",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "",
     "dependencies": {
         "core": "*",

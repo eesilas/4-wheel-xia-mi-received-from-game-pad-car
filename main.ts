@@ -17,9 +17,9 @@ radio.onReceivedNumber(function (receivedNumber) {
         xiamiBoard.motorStop(MOTOR.M3)
         xiamiBoard.motorStop(MOTOR.M4)
         xiamiBoard.OLEDshowUserText("Stop", 0, 0)
-    } else if (receivedNumber == 4) {
+    } else if (receivedNumber == 4 || receivedNumber == 5) {
         L()
-    } else if (receivedNumber == 10) {
+    } else if (receivedNumber == 10 || receivedNumber == 11) {
         R()
     } else {
         basic.showIcon(IconNames.SmallHeart)

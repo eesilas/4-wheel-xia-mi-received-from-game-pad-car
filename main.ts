@@ -45,6 +45,8 @@ function B () {
     xiamiBoard.OLEDshowUserText("Backward", 0, 0)
 }
 function init () {
+    xiamiBoard.setIndexColor(0, 0xffff00)
+    xiamiBoard.setIndexColor(1, 0xffff00)
     xiamiBoard.initXiaMiBoard()
     xiamiBoard.tempHumiInit(SENSOR.AHT20)
     xiamiBoard.tempHumiInit(SENSOR.SHTC3)
@@ -83,10 +85,13 @@ function R () {
     xiamiBoard.OLEDclear()
     xiamiBoard.OLEDshowUserText("Turn right", 0, 0)
 }
+let bufpar = 0
 let vnorm = 0
-xiamiBoard.setIndexColor(0, 0xffff00)
-xiamiBoard.setIndexColor(1, 0xffff00)
 init()
 basic.forever(function () {
-	
+    bufpar = Math.trunc(xiamiBoard.Ultrasonic()) * 5
+    xiamiBoard.setIndexColor(0, xiamiBoard.rgb(bufpar, 116, 55))
+    xiamiBoard.setIndexColor(1, xiamiBoard.rgb(bufpar, 116, 55))
+    xiamiBoard.OLEDshowUserNumber(bufpar / 5, 2, 0)
+    xiamiBoard.OLEDshowUserText("cm", 2, 6)
 })

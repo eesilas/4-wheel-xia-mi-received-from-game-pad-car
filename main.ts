@@ -31,6 +31,15 @@ function F () {
     xiamiBoard.motorRun(MOTOR.M4, DIRECTION.CCW, vnorm)
     xiamiBoard.OLEDshowUserText("Forward", 0, 0)
 }
+input.onButtonPressed(Button.A, function () {
+    for (let index = 0; index < 100; index++) {
+        vresistor = xiamiBoard.readAngle()
+        vnorm = vresistor / 2
+        xiamiBoard.motorRun(MOTOR.M1, DIRECTION.CW, vnorm)
+        basic.pause(100)
+    }
+    basic.showIcon(IconNames.Heart)
+})
 function B () {
     xiamiBoard.motorRun(MOTOR.M1, DIRECTION.CW, vnorm)
     xiamiBoard.motorRun(MOTOR.M2, DIRECTION.CCW, vnorm)
@@ -50,8 +59,8 @@ xiamiBoard.IR_callbackUser(function (IR) {
     basic.pause(2000)
     IR = xiamiBoard.IR_read()
 })
-let vnorm = 0
 let vresistor = 0
+let vnorm = 0
 xiamiBoard.initXiaMiBoard()
 xiamiBoard.tempHumiInit(SENSOR.AHT20)
 xiamiBoard.tempHumiInit(SENSOR.SHTC3)
@@ -69,15 +78,12 @@ radio.setGroup(121)
 xiamiBoard.OLEDclear()
 xiamiBoard.setBrightness(64)
 xiamiBoard.LED(1, 0, 0)
+basic.pause(200)
+xiamiBoard.LED(1, 1, 0)
+basic.pause(200)
 xiamiBoard.LED(0, 1, 0)
+basic.pause(200)
 xiamiBoard.LED(0, 0, 1)
-for (let index = 0; index < 100; index++) {
-    vresistor = xiamiBoard.readAngle()
-    vnorm = vresistor / 2
-    xiamiBoard.motorRun(MOTOR.M1, DIRECTION.CW, vnorm)
-    basic.pause(100)
-}
-basic.showIcon(IconNames.Heart)
 basic.forever(function () {
     xiamiBoard.setIndexColor(0, 0xffff00)
     xiamiBoard.setIndexColor(1, 0xffff00)

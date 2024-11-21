@@ -61,7 +61,7 @@ function init () {
     led.toggle(4, 2)
     radio.setGroup(121)
     xiamiBoard.OLEDclear()
-    xiamiBoard.setBrightness(42)
+    xiamiBoard.setBrightness(87)
     xiamiBoard.LED(1, 0, 0)
     basic.pause(200)
     xiamiBoard.LED(1, 1, 0)
@@ -89,9 +89,13 @@ let bufpar = 0
 let vnorm = 0
 init()
 basic.forever(function () {
-    bufpar = Math.trunc(xiamiBoard.Ultrasonic()) * 5
-    xiamiBoard.setIndexColor(0, xiamiBoard.rgb(bufpar, 116, 55))
-    xiamiBoard.setIndexColor(1, xiamiBoard.rgb(bufpar, 116, 55))
-    xiamiBoard.OLEDshowUserNumber(bufpar / 5, 2, 0)
+    xiamiBoard.OLEDclear()
+    bufpar = Math.round(xiamiBoard.Ultrasonic())
+    xiamiBoard.setIndexColor(0, xiamiBoard.rgb(bufpar, 50, 50))
+    xiamiBoard.setIndexColor(1, xiamiBoard.rgb(bufpar, 50, 50))
+    xiamiBoard.OLEDshowUserNumber(bufpar * 1, 2, 0)
     xiamiBoard.OLEDshowUserText("cm", 2, 6)
+    xiamiBoard.OLEDshowUserNumber(Math.round(xiamiBoard.readAngle()), 4, 0)
+    xiamiBoard.OLEDshowUserText("resistor", 4, 6)
+    basic.pause(500)
 })

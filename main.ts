@@ -6,11 +6,11 @@ function L () {
     xiamiBoard.OLEDshowUserText("Turn left", 0, 0)
 }
 radio.onReceivedNumber(function (receivedNumber) {
-    if (receivedNumber == 12) {
+    if (receivedNumber == 12 || receivedNumber == 13) {
         F()
-    } else if (receivedNumber == 8) {
+    } else if (receivedNumber == 8 || receivedNumber == 9) {
         B()
-    } else if (receivedNumber == 14) {
+    } else if (receivedNumber == 14 || receivedNumber == 15) {
         xiamiBoard.motorStop(MOTOR.M1)
         xiamiBoard.motorStop(MOTOR.M2)
         xiamiBoard.motorStop(MOTOR.M3)
@@ -88,4 +88,5 @@ basic.forever(function () {
     xiamiBoard.setIndexColor(0, 0xffff00)
     xiamiBoard.setIndexColor(1, 0xffff00)
     vresistor = xiamiBoard.readAngle()
+    vnorm = vresistor / 2
 })

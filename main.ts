@@ -1,4 +1,5 @@
 function L () {
+    vnorm = xiamiBoard.readAngle() / 2
     xiamiBoard.motorRun(MOTOR.M1, DIRECTION.CCW, vnorm)
     xiamiBoard.motorRun(MOTOR.M2, DIRECTION.CW, vnorm / 2)
     xiamiBoard.motorRun(MOTOR.M3, DIRECTION.CW, vnorm / 2)
@@ -25,6 +26,7 @@ radio.onReceivedNumber(function (receivedNumber) {
     }
 })
 function F () {
+    vnorm = xiamiBoard.readAngle() / 2
     xiamiBoard.motorRun(MOTOR.M1, DIRECTION.CCW, vnorm)
     xiamiBoard.motorRun(MOTOR.M2, DIRECTION.CW, vnorm)
     xiamiBoard.motorRun(MOTOR.M3, DIRECTION.CW, vnorm)
@@ -33,14 +35,14 @@ function F () {
 }
 input.onButtonPressed(Button.A, function () {
     for (let index = 0; index < 100; index++) {
-        vresistor = xiamiBoard.readAngle()
-        vnorm = vresistor / 2
+        vnorm = xiamiBoard.readAngle() / 2
         xiamiBoard.motorRun(MOTOR.M1, DIRECTION.CW, vnorm)
         basic.pause(100)
     }
     basic.showIcon(IconNames.Heart)
 })
 function B () {
+    vnorm = xiamiBoard.readAngle() / 2
     xiamiBoard.motorRun(MOTOR.M1, DIRECTION.CW, vnorm)
     xiamiBoard.motorRun(MOTOR.M2, DIRECTION.CCW, vnorm)
     xiamiBoard.motorRun(MOTOR.M3, DIRECTION.CCW, vnorm)
@@ -48,6 +50,7 @@ function B () {
     xiamiBoard.OLEDshowUserText("Backward", 0, 0)
 }
 function R () {
+    vnorm = xiamiBoard.readAngle() / 2
     xiamiBoard.motorRun(MOTOR.M1, DIRECTION.CCW, vnorm / 2)
     xiamiBoard.motorRun(MOTOR.M2, DIRECTION.CW, vnorm)
     xiamiBoard.motorRun(MOTOR.M3, DIRECTION.CW, vnorm)
@@ -59,7 +62,6 @@ xiamiBoard.IR_callbackUser(function (IR) {
     basic.pause(2000)
     IR = xiamiBoard.IR_read()
 })
-let vresistor = 0
 let vnorm = 0
 xiamiBoard.initXiaMiBoard()
 xiamiBoard.tempHumiInit(SENSOR.AHT20)
@@ -84,9 +86,8 @@ basic.pause(200)
 xiamiBoard.LED(0, 1, 0)
 basic.pause(200)
 xiamiBoard.LED(0, 0, 1)
+vnorm = xiamiBoard.readAngle() / 2
 basic.forever(function () {
     xiamiBoard.setIndexColor(0, 0xffff00)
     xiamiBoard.setIndexColor(1, 0xffff00)
-    vresistor = xiamiBoard.readAngle()
-    vnorm = vresistor / 2
 })

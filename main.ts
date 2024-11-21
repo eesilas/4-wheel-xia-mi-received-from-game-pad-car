@@ -97,5 +97,5 @@ basic.forever(function () {
     xiamiBoard.OLEDshowUserText("cm", 2, 6)
     xiamiBoard.OLEDshowUserNumber(Math.round(xiamiBoard.readAngle()), 4, 0)
     xiamiBoard.OLEDshowUserText("resistor", 4, 6)
-    basic.pause(500)
+    basic.pause(200)
 })

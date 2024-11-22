@@ -12,11 +12,7 @@ radio.onReceivedNumber(function (receivedNumber) {
     } else if (receivedNumber == 8 || receivedNumber == 9) {
         B()
     } else if (receivedNumber == 14 || receivedNumber == 15 || bufpar < 9) {
-        xiamiBoard.motorStop(MOTOR.M1)
-        xiamiBoard.motorStop(MOTOR.M2)
-        xiamiBoard.motorStop(MOTOR.M3)
-        xiamiBoard.motorStop(MOTOR.M4)
-        xiamiBoard.OLEDshowUserText("Stop", 0, 0)
+        stop()
     } else if (receivedNumber == 4 || receivedNumber == 5) {
         L()
     } else if (receivedNumber == 10 || receivedNumber == 11) {
@@ -33,6 +29,13 @@ function F () {
     xiamiBoard.OLEDclear()
     xiamiBoard.OLEDshowUserText("Forward", 0, 0)
 }
+function stop () {
+    xiamiBoard.motorStop(MOTOR.M1)
+    xiamiBoard.motorStop(MOTOR.M2)
+    xiamiBoard.motorStop(MOTOR.M3)
+    xiamiBoard.motorStop(MOTOR.M4)
+    xiamiBoard.OLEDshowUserText("Stop", 0, 0)
+}
 function B () {
     xiamiBoard.motorRun(MOTOR.M1, DIRECTION.CW, vnorm)
     xiamiBoard.motorRun(MOTOR.M2, DIRECTION.CCW, vnorm)
@@ -42,15 +45,9 @@ function B () {
     xiamiBoard.OLEDshowUserText("Backward", 0, 0)
 }
 function init () {
+    xiamiBoard.initXiaMiBoard()
     xiamiBoard.setIndexColor(0, 0xffff00)
     xiamiBoard.setIndexColor(1, 0xffff00)
-    xiamiBoard.initXiaMiBoard()
-    xiamiBoard.tempHumiInit(SENSOR.AHT20)
-    xiamiBoard.tempHumiInit(SENSOR.SHTC3)
-    xiamiBoard.setRelay(RELAYVERSION.V1, RELAY.CLOSE)
-    xiamiBoard.setRelay(RELAYVERSION.V1, RELAY.DISCON)
-    xiamiBoard.setRelay(RELAYVERSION.V2, RELAY.CLOSE)
-    xiamiBoard.setRelay(RELAYVERSION.V2, RELAY.DISCON)
     led.toggle(2, 2)
     led.toggle(1, 2)
     led.toggle(0, 2)
@@ -87,7 +84,8 @@ basic.forever(function () {
     xiamiBoard.setIndexColor(1, xiamiBoard.rgb(bufpar, 50, 50))
     xiamiBoard.OLEDshowUserNumber(bufpar * 1, 2, 0)
     xiamiBoard.OLEDshowUserText("cm", 2, 6)
-    xiamiBoard.OLEDshowUserNumber(Math.round(xiamiBoard.readAngle()), 4, 0)
+    vnorm = Math.round(xiamiBoard.readAngle()) / 4
+    xiamiBoard.OLEDshowUserNumber(vnorm, 4, 0)
     xiamiBoard.OLEDshowUserText("resistor", 4, 6)
     Irvar = xiamiBoard.IR_read()
     xiamiBoard.OLEDshowUserNumber(xiamiBoard.IR_read(), 6, 0)

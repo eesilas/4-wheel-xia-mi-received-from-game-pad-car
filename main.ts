@@ -91,6 +91,6 @@ basic.forever(function () {
     xiamiBoard.OLEDshowUserText("resistor", 4, 6)
     Irvar = xiamiBoard.IR_read()
     xiamiBoard.OLEDshowUserNumber(xiamiBoard.IR_read(), 6, 0)
-    xiamiBoard.OLEDshowUserText("IR　", 6, 10)
+    xiamiBoard.OLEDshowUserText("IR　", 6, 6)
     basic.pause(200)
 })

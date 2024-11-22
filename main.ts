@@ -7,18 +7,18 @@ function L () {
     xiamiBoard.OLEDshowUserText("Turn left", 0, 0)
 }
 radio.onReceivedNumber(function (receivedNumber) {
-    if (receivedNumber == 12 || receivedNumber == 13) {
+    if (receivedNumber == 2 || receivedNumber == 2) {
         F()
-    } else if (receivedNumber == 8 || receivedNumber == 9) {
+    } else if (receivedNumber == 8 || receivedNumber == 8) {
         B()
-    } else if (receivedNumber == 14 || receivedNumber == 15 || bufpar < 9) {
+    } else if (receivedNumber == 5 || receivedNumber == 5 || bufpar < 9) {
         stop()
-    } else if (receivedNumber == 4 || receivedNumber == 5) {
+    } else if (receivedNumber == 4 || receivedNumber == 4) {
         L()
-    } else if (receivedNumber == 10 || receivedNumber == 11) {
+    } else if (receivedNumber == 6 || receivedNumber == 6) {
         R()
     } else {
-        basic.showIcon(IconNames.SmallHeart)
+        basic.showIcon(IconNames.Tortoise)
     }
 })
 function F () {
@@ -53,7 +53,7 @@ function init () {
     led.toggle(0, 2)
     led.toggle(3, 2)
     led.toggle(4, 2)
-    radio.setGroup(121)
+    radio.setGroup(111)
     xiamiBoard.OLEDclear()
     xiamiBoard.setBrightness(87)
     xiamiBoard.LED(1, 0, 0)
@@ -84,7 +84,7 @@ basic.forever(function () {
     xiamiBoard.setIndexColor(1, xiamiBoard.rgb(bufpar, 50, 50))
     xiamiBoard.OLEDshowUserNumber(bufpar * 1, 2, 0)
     xiamiBoard.OLEDshowUserText("cm", 2, 6)
-    vnorm = Math.round(xiamiBoard.readAngle()) / 4
+    vnorm = Math.round(xiamiBoard.readAngle() / 4)
     xiamiBoard.OLEDshowUserNumber(vnorm, 4, 0)
     xiamiBoard.OLEDshowUserText("resistor", 4, 6)
     Irvar = xiamiBoard.IR_read()

@@ -11,7 +11,7 @@ radio.onReceivedNumber(function (receivedNumber) {
         F()
     } else if (receivedNumber == 8 || receivedNumber == 9) {
         B()
-    } else if (receivedNumber == 14 || receivedNumber == 15) {
+    } else if (receivedNumber == 14 || receivedNumber == 15 || bufpar < 9) {
         xiamiBoard.motorStop(MOTOR.M1)
         xiamiBoard.motorStop(MOTOR.M2)
         xiamiBoard.motorStop(MOTOR.M3)
@@ -33,9 +33,6 @@ function F () {
     xiamiBoard.OLEDclear()
     xiamiBoard.OLEDshowUserText("Forward", 0, 0)
 }
-input.onButtonPressed(Button.A, function () {
-    vnorm += -10
-})
 function B () {
     xiamiBoard.motorRun(MOTOR.M1, DIRECTION.CW, vnorm)
     xiamiBoard.motorRun(MOTOR.M2, DIRECTION.CCW, vnorm)
@@ -71,12 +68,6 @@ function init () {
     xiamiBoard.LED(0, 0, 1)
     vnorm = 120
 }
-input.onButtonPressed(Button.AB, function () {
-    vnorm = 180
-})
-input.onButtonPressed(Button.B, function () {
-    vnorm += 10
-})
 function R () {
     xiamiBoard.motorRun(MOTOR.M1, DIRECTION.CCW, vnorm / 2)
     xiamiBoard.motorRun(MOTOR.M2, DIRECTION.CW, vnorm)
@@ -85,6 +76,7 @@ function R () {
     xiamiBoard.OLEDclear()
     xiamiBoard.OLEDshowUserText("Turn right", 0, 0)
 }
+let Irvar = 0
 let bufpar = 0
 let vnorm = 0
 init()
@@ -97,5 +89,8 @@ basic.forever(function () {
     xiamiBoard.OLEDshowUserText("cm", 2, 6)
     xiamiBoard.OLEDshowUserNumber(Math.round(xiamiBoard.readAngle()), 4, 0)
     xiamiBoard.OLEDshowUserText("resistor", 4, 6)
+    Irvar = xiamiBoard.IR_read()
+    xiamiBoard.OLEDshowUserNumber(xiamiBoard.IR_read(), 6, 0)
+    xiamiBoard.OLEDshowUserText("IR　", 6, 10)
     basic.pause(200)
 })

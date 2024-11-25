@@ -36,6 +36,9 @@ function stop () {
     xiamiBoard.motorStop(MOTOR.M4)
     xiamiBoard.OLEDshowUserText("Stop", 0, 0)
 }
+input.onButtonPressed(Button.A, function () {
+    pins.servoWritePin(AnalogPin.P0, 45)
+})
 function B () {
     xiamiBoard.motorRun(MOTOR.M1, DIRECTION.CW, vnorm)
     xiamiBoard.motorRun(MOTOR.M2, DIRECTION.CCW, vnorm)
@@ -65,6 +68,12 @@ function init () {
     xiamiBoard.LED(0, 0, 1)
     vnorm = 120
 }
+input.onButtonPressed(Button.AB, function () {
+    pins.servoWritePin(AnalogPin.P0, 135)
+})
+input.onButtonPressed(Button.B, function () {
+    pins.servoWritePin(AnalogPin.P0, 90)
+})
 function R () {
     xiamiBoard.motorRun(MOTOR.M1, DIRECTION.CCW, vnorm / 2)
     xiamiBoard.motorRun(MOTOR.M2, DIRECTION.CW, vnorm)

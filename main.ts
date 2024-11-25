@@ -22,7 +22,7 @@ radio.onReceivedNumber(function (receivedNumber) {
     } else if (receivedNumber == 2) {
         pins.servoWritePin(AnalogPin.P0, 90)
     } else if (receivedNumber == 3) {
-        pins.servoWritePin(AnalogPin.P0, 135)
+        pins.servoWritePin(AnalogPin.P0, 128)
     } else {
         basic.showIcon(IconNames.SmallHeart)
     }

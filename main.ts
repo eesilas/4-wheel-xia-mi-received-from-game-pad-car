@@ -22,7 +22,7 @@ radio.onReceivedNumber(function (receivedNumber) {
     } else if (receivedNumber == 2) {
         pins.servoWritePin(AnalogPin.P0, 90)
     } else if (receivedNumber == 3) {
-        pins.servoWritePin(AnalogPin.P0, 128)
+        pins.servoWritePin(AnalogPin.P0, 126)
     } else {
         basic.showIcon(IconNames.SmallHeart)
     }
@@ -51,24 +51,12 @@ function B () {
     xiamiBoard.OLEDshowUserText("Backward", 0, 0)
 }
 function init () {
+    radio.setGroup(121)
     xiamiBoard.initXiaMiBoard()
     xiamiBoard.setIndexColor(0, 0xffff00)
     xiamiBoard.setIndexColor(1, 0xffff00)
-    led.toggle(2, 2)
-    led.toggle(1, 2)
-    led.toggle(0, 2)
-    led.toggle(3, 2)
-    led.toggle(4, 2)
-    radio.setGroup(121)
     xiamiBoard.OLEDclear()
     xiamiBoard.setBrightness(87)
-    xiamiBoard.LED(1, 0, 0)
-    basic.pause(200)
-    xiamiBoard.LED(1, 1, 0)
-    basic.pause(200)
-    xiamiBoard.LED(0, 1, 0)
-    basic.pause(200)
-    xiamiBoard.LED(0, 0, 1)
     vnorm = 120
 }
 function R () {
